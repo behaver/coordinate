@@ -54,6 +54,31 @@ Coordinate 3D 库包含以下组件：
 
 ## 用例
 
+使用 npm 安装组件库，在项目目录下执行：
+
+`npm install @behaver/coordinate`
+
+Coordinate 组件调用：
+
+```js
+const { SphericalCoordinate3D, PolarCoordinate2D } = require('@behaver/coordinate');
+
+// 实例化一个球坐标 (10, π / 3, π)
+let sc = new SphericalCoordinate3D(10, Math.PI / 3, Math.PI);
+```
+
+当只使用 3D 库中涉及的组件时（2D 库同理），可以使用如下方式调用：
+
+```js
+// 3d 库组件调用
+const { SphericalCoordinate3D, RectangularCoordinate3D } = require('@behaver/coordinate/3d');
+
+// 2d 库组件调用
+const { PolarCoordinate2D, RectangularCoordinate2D } = require('@behaver/coordinate/2d');
+```
+
+---
+
 使用 SystemSwitcherPoint3D 将3维空间坐标点进行坐标系统间的转换：
 
 ```js
