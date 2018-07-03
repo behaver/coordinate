@@ -4,14 +4,53 @@
 
 ## 简介
 
-Coordinate 组件库可被用于 坐标变换 和 坐标系统转换 等。
+Coordinate 组件库可被用于 坐标的变换 和 坐标系统的转换 等。
 
-## 功能
+组件库又分成了两个子库：2D 和 3D，其中 2D 库负责平面坐标的处理，3D 库负责空间坐标的处理。
 
-1. 空间坐标点的平移、缩放和旋转
-2. 空间坐标系统转换
-3. 平面坐标点的平移、缩放和旋转
-4. 平面坐标系统转换
+Coordinate 组件库目前主要支持以下坐标变换操作：
+
+* 平移
+* 缩放
+* 旋转
+* 手性翻转
+* 系统切换
+
+其中 2d 组件库目前支持以下坐标系统：
+
+* 直角坐标系(RC)
+* 极坐标系(PC)
+
+3d 组件库目前支持以下坐标系统：
+
+* 直角坐标系(RC)
+* 柱面坐标系(CC)
+* 球坐标系(SC)
+
+## 组件
+
+Coordinate 2D 库包含以下组件：
+
+* `SystemSwitcher2D` 平面坐标系统转换组件
+* `Transformer2D` 平面坐标变换组件
+* `BaseCoordinate2D` 平面坐标基类
+* `Coordinate2D` 平面坐标组件
+* `RectangularCoordinate2D` 平面直角坐标组件
+* `PolarCoordinate2D` 平面极坐标组件
+
+![Coordinate2D](/doc/img/coordinate-2d.png "Coordinate 2d 组件库类图")
+
+Coordinate 3D 库包含以下组件：
+
+* `SystemSwitcher3D` 空间坐标系统转换组件
+* `Transformer3D` 空间坐标变换组件
+* `BaseCoordinate3D` 空间坐标基类
+* `Coordinate3D` 空间坐标组件
+* `RectangularCoordinate3D` 空间直角坐标组件
+* `CylindricalCoordinate3D` 空间柱面坐标组件
+* `SphericalCoordinate3D` 空间球坐标组件
+
+![Coordinate3D](/doc/img/coordinate-3d.png "Coordinate 3d 组件库类图")
 
 ## 用例
 

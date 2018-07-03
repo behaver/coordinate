@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * 不同坐标系统之间，坐标的转换操作集合
+ * 坐标在不同系统之间的转换操作集合
  *
  * @private
  * @type {Object}
@@ -25,24 +25,24 @@ const switchers = {
 };
 
 /**
- * SystemSwitcherPoint2D
+ * SystemSwitcher2D
  * 
- * SystemSwitcherPoint2D 对象用于平面点的坐标系统转换
+ * SystemSwitcher2D 对象用于平面点的坐标系统转换
  * 支持的平面坐标系统：
  * 直角坐标系 和 极坐标系
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 2.1.0
  */
-class SystemSwitcherPoint2D {
+class SystemSwitcher2D {
 
   /**
    * 构造函数
    * 
-   * @param  {Number} a              初始 平面点坐标 第一坐标值
-   * @param  {Number} b              初始 平面点坐标 第二坐标值
-   * @param  {String} system         初始 坐标系统
-   *                                 包括：rc: 直角坐标; pc: 极坐标;
+   * @param  {Number} a         初始 平面点坐标 第一坐标值
+   * @param  {Number} b         初始 平面点坐标 第二坐标值
+   * @param  {String} system    初始 坐标系统
+   *                            包括：rc: 直角坐标; pc: 极坐标;
    */
   constructor(a, b, system = 'rc') {
     this.cache = {
@@ -54,11 +54,11 @@ class SystemSwitcherPoint2D {
   /**
    * 设定起始坐标
    * 
-   * @param  {Number} a              初始 平面点坐标 第一坐标值
-   * @param  {Number} b              初始 平面点坐标 第二坐标值
-   * @param  {String} system         初始 坐标系统
-   *                                 'rc': 直角坐标; 'pc': 极坐标;
-   * @return {SystemSwitcherPoint2D} 返回 this 引用
+   * @param  {Number} a         初始 平面点坐标 第一坐标值
+   * @param  {Number} b         初始 平面点坐标 第二坐标值
+   * @param  {String} system    初始 坐标系统
+   *                            包括：'rc': 直角坐标; 'pc': 极坐标;
+   * @return {SystemSwitcher2D} 返回 this 引用
    */
   from(a, b, system = 'rc') {
     switch(system) {
@@ -77,9 +77,9 @@ class SystemSwitcherPoint2D {
   /**
    * 转换至给定坐标系统
    * 
-   * @param  {String} system         转出的坐标系统
-   *                                 'rc': 直角坐标; 'pc': 极坐标;
-   * @return {Object}                返回 坐标 对象
+   * @param  {String} system    转出的坐标系统
+   *                            'rc': 直角坐标; 'pc': 极坐标;
+   * @return {Object}           返回 坐标 对象
    */
   to(system = 'rc') {
     switch (system) {
@@ -98,9 +98,9 @@ class SystemSwitcherPoint2D {
   /**
    * 设定起始直角坐标 P(x, y)
    * 
-   * @param  {Number} x              起始坐标 x 轴坐标
-   * @param  {Number} y              起始坐标 y 轴坐标
-   * @return {SystemSwitcherPoint2D} 返回 this 引用
+   * @param  {Number} x         起始坐标 x 轴坐标
+   * @param  {Number} y         起始坐标 y 轴坐标
+   * @return {SystemSwitcher2D} 返回 this 引用
    */
   fromRC(x, y) {
     if (typeof(x) !== 'number' || typeof(y) !== 'number') throw Error('Illegality Parameters.');
@@ -115,7 +115,7 @@ class SystemSwitcherPoint2D {
   /**
    * 转换坐标至直角坐标系
    * 
-   * @return {Object}                返回 直角坐标 对象
+   * @return {Object}           返回 直角坐标 对象
    */
   toRC() {
     if (!this.cache.rc) {
@@ -131,9 +131,9 @@ class SystemSwitcherPoint2D {
   /**
    * 设定起始极坐标 P(ρ, θ)
    * 
-   * @param  {Number} rho            极坐标 ρ 值，ρ ≥ 0
-   * @param  {Number} theta          极坐标 θ 值，0 ≤ θ ≤ 2π
-   * @return {SystemSwitcherPoint2D} 返回 this 引用
+   * @param  {Number} rho       极坐标 ρ 值，ρ ≥ 0
+   * @param  {Number} theta     极坐标 θ 值，0 ≤ θ ≤ 2π
+   * @return {SystemSwitcher2D} 返回 this 引用
    */
   fromPC(rho, theta) {
     if (typeof(rho) !== 'number' || typeof(theta) !== 'number') throw Error('Illegality Parameters.');
@@ -150,7 +150,7 @@ class SystemSwitcherPoint2D {
   /**
    * 转换至极坐标系
    * 
-   * @return {Object}                返回 极坐标 对象
+   * @return {Object}           返回 极坐标 对象
    */
   toPC() {
     if (!this.cache.pc) {
@@ -164,4 +164,4 @@ class SystemSwitcherPoint2D {
   }
 };
 
-module.exports = SystemSwitcherPoint2D;
+module.exports = SystemSwitcher2D;

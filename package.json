@@ -1,6 +1,6 @@
 {
   "name": "@behaver/coordinate",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "A toolkit about coordinate.",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,9 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behaver/coordinate.git"
   }
 }

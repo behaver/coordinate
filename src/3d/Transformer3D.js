@@ -1,21 +1,21 @@
 'use strict';
 
 /**
- * TransformerPoint3D
+ * Transformer3D
  * 
  * 对空间坐标系内的任意点进行平移，旋转，缩放等处理。
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 2.1.0
  */
-class TransformerPoint3D {
+class Transformer3D {
 
   /**
    * 构造函数
    * 
-   * @param  {Number} x          空间点坐标的 x 值
-   * @param  {Number} y          空间点坐标的 y 值
-   * @param  {Number} z          空间点坐标的 z 值
+   * @param  {Number} x          空间点坐标 x 值
+   * @param  {Number} y          空间点坐标 y 值
+   * @param  {Number} z          空间点坐标 z 值
    */
   constructor(x, y, z) {
     if (x === undefined && y === undefined && z === undefined) this.point = { x: 0, y: 0, z: 0 };
@@ -28,7 +28,7 @@ class TransformerPoint3D {
    * @param  {Number} x           空间点坐标 x 值
    * @param  {Number} y           空间点坐标 y 值
    * @param  {Number} z           空间点坐标 z 值
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @return {Transformer3D}      返回 this 引用
    */
   from(x, y, z) {
     if (typeof(x) !== 'number' || typeof(y) !== 'number' || typeof(z) !== 'number') throw Error('Illegality Parameters.');
@@ -53,7 +53,7 @@ class TransformerPoint3D {
    * @param  {Number} dx          X 轴平移距离
    * @param  {Number} dy          Y 轴平移距离
    * @param  {Number} dz          Z 轴平移距离
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @return {Transformer3D}      返回 this 引用
    */
   translate(dx, dy, dz) {
     if (typeof(dx) !== 'number' || typeof(dy) !== 'number' || typeof(dz) !== 'number') throw Error('Illegality Parameters.');
@@ -72,7 +72,7 @@ class TransformerPoint3D {
    * @param  {Number} sx          X 轴缩放比例
    * @param  {Number} sy          Y 轴缩放比例
    * @param  {Number} sz          Z 轴缩放比例
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @return {Transformer3D}      返回 this 引用
    */
   scale(sx, sy, sz) {
     if (typeof(sx) !== 'number' || typeof(sy) !== 'number' || typeof(sz) !== 'number') throw Error('Illegality Parameters.');
@@ -90,12 +90,11 @@ class TransformerPoint3D {
    *
    * 以右手系为标准
    * 
-   * @param  {Number} angle       绕 X 轴旋转的角度, 值域为[0, 2π].
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @param  {Number} angle       旋转角度，单位：弧度
+   * @return {Transformer3D}      返回 this 引用
    */
   rotateX(angle) {
     if (typeof(angle) !== 'number') throw Error('Illegality param angle.');
-    if (angle < 0 || angle > 2 * Math.PI) throw Error('The param angle has to be in [0, 2π]');
 
     let cosa = Math.cos(angle);
     let sina = Math.sin(angle);
@@ -113,12 +112,11 @@ class TransformerPoint3D {
    *
    * 以右手系为标准
    * 
-   * @param  {Number} angle       绕 Y 轴旋转的角度, 值域为[0, 2π].
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @param  {Number} angle       旋转角度，单位：弧度
+   * @return {Transformer3D}      返回 this 引用
    */
   rotateY(angle) {
     if (typeof(angle) !== 'number') throw Error('Illegality param angle.');
-    if (angle < 0 || angle > 2 * Math.PI) throw Error('The param angle has to be in [0, 2π]');
 
     let cosa = Math.cos(angle);
     let sina = Math.sin(angle);
@@ -136,12 +134,11 @@ class TransformerPoint3D {
    *
    * 以右手系为标准
    * 
-   * @param  {Number} angle       绕 Z 轴旋转的角度, 值域为[0, 2π].
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @param  {Number} angle       旋转角度，单位：弧度
+   * @return {Transformer3D}      返回 this 引用
    */
   rotateZ(angle) {
     if (typeof(angle) !== 'number') throw Error('Illegality param angle.');
-    if (angle < 0 || angle > 2 * Math.PI) throw Error('The param angle has to be in [0, 2π]');
 
     let cosa = Math.cos(angle);
     let sina = Math.sin(angle);
@@ -182,15 +179,14 @@ class TransformerPoint3D {
    *
    * 参考资料: http://www.cnblogs.com/yiyezhai/p/3176725.html
    * 
-   * @param  {Number} angle       旋转角度, 值域为[0, 2π].
+   * @param  {Number} angle       旋转角度，单位：弧度
    * @param  {Number} x           旋转轴向量 x 坐标
    * @param  {Number} y           旋转轴向量 y 坐标
    * @param  {Number} z           旋转轴向量 z 坐标
-   * @return {TransformerPoint3D} 返回 this 引用
+   * @return {Transformer3D}      返回 this 引用
    */
   rotateVector(angle, x, y, z) {
     if (typeof(angle) !== 'number' || typeof(x) !== 'number' || typeof(y) !== 'number' || typeof(z) !== 'number') throw Error('The parameters have to be numbers.');
-    if (angle < 0 || angle > 2 * Math.PI) throw Error('The param angle has to be in [0, 2π]');
 
     let v_length = Math.sqrt(x * x + y * y + z + z);
     if (v_length === 0) {
@@ -260,12 +256,12 @@ class TransformerPoint3D {
    *
    * 以右手系为标准
    * 
-   * @param  {Number} angle               旋转角度
+   * @param  {Number} angle               旋转角度，单位：弧度
    * @param  {String} options.axis        设定围绕坐标轴
    *                                      可设定：'x'、'y'、'z'
    * @param  {Object} options.axialVector 设定绕轴向量
    *                                      例如：{ x: 12, y: 4, z: 3 }
-   * @return {TransformerPoint3D}         返回 this 引用
+   * @return {Transformer3D}              返回 this 引用
    */
   rotate(angle, { axis, axialVector } = { axis: 'z' }) {
     if (axialVector) {
@@ -288,6 +284,31 @@ class TransformerPoint3D {
       }
     }
   }
+
+  /**
+   * 坐标反演，用于左右手性更换
+   *
+   * @param  {String} axis               反演轴
+   *                                     可选参数：'x'、'y'、'z'，缺省值为：'y'
+   * @return {Transformer3D}             返回 this 引用
+   */
+  inverse(axis = 'y') {
+    switch (axis) {
+      case 'x':
+        this.point.x = -this.point.x;
+        break;
+      case 'y':
+        this.point.y = -this.point.y;
+        break;
+      case 'z':
+        this.point.z = -this.point.z;
+        break;
+
+      default:
+        throw Error('Illegality param axis.');
+    }
+    return this;
+  }
 };
 
-module.exports = TransformerPoint3D;
+module.exports = Transformer3D;
