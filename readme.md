@@ -92,7 +92,7 @@ c3d.sc(10, Math.PI / 3, Math.PI);
 let cc = c3d.translate(2, 3, -4).rolateVector(Math.PI / 2, 1, 1, 1).toCC().equal();
 ```
 
-**\*Coordinate2D 的使用与此相同。**
+*\*Coordinate2D 的使用与此相同。*
 
 ---
 
@@ -105,7 +105,7 @@ let sc = new SphericalCoordinate3D(10, Math.PI / 3, Math.PI);
 let rc = sc.rotateX(Math.PI / 3).toRC().equal();
 ```
 
-**\*用于处理空间直角坐标的 RectangularCoordinate3D 组件 和 用于处理空间柱面坐标的 CylindricalCoordinate3D 组件 的使用方法相同**
+*\*用于处理空间直角坐标的 RectangularCoordinate3D 组件 和 用于处理空间柱面坐标的 CylindricalCoordinate3D 组件 的使用方法相同*
 
 ---
 
@@ -118,7 +118,7 @@ let pc = new PolarCoordinate2D(10, Math.PI / 3);
 let rc = pc.scale(0.2, 3).toRC().equal();
 ```
 
-**\*处理平面直角坐标的 RectangularCoordinate2D 组件 使用方法相同**
+*\*处理平面直角坐标的 RectangularCoordinate2D 组件 使用方法相同*
 
 ---
 
@@ -143,7 +143,7 @@ SystemSwitcherPoint3D 目前支持的坐标系统包括：
 * 柱面坐标系(CC)
 * 球坐标系(SC)
 
-**\*SystemSwitcherPoint2D 的使用方法与 SystemSwitcherPoint3D 类同，具体可见 API 说明。**
+*\*SystemSwitcherPoint2D 的使用方法与 SystemSwitcherPoint3D 类同，具体可见 API 说明。*
 
 SystemSwitcherPoint2D 目前支持的坐标系统包括：
 
@@ -164,7 +164,7 @@ let res = tp3d
 	.equal();
 ```
 
-**\*TransformerPoint2D 的使用方法与 TransformerPoint3D 类同，具体可见 API 说明。**
+*\*TransformerPoint2D 的使用方法与 TransformerPoint3D 类同，具体可见 API 说明。*
 
 ## API
 
