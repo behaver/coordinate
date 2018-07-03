@@ -79,6 +79,49 @@ const { PolarCoordinate2D, RectangularCoordinate2D } = require('@behaver/coordin
 
 ---
 
+使用 Coordinate3D 组件处理空间坐标：
+
+```js
+let c3d = new Coordinate;
+
+// 设定初始球面坐标
+// 等同于 new Coordinate(10, Math.PI / 3, Math.PI, 'sc');
+c3d.sc(10, Math.PI / 3, Math.PI);
+
+// 将坐标 x, y, z 轴分别平移 2, 3, -4，然后以直角向量 (1, 1, 1) 为轴旋转 90°，最后转换为柱面坐标并输出结果。
+let cc = c3d.translate(2, 3, -4).rolateVector(Math.PI / 2, 1, 1, 1).toCC().equal();
+```
+
+**\*Coordinate2D 的使用与此相同。**
+
+---
+
+使用 SphericalCoordinate3D 组件处理空间球坐标：
+
+```js
+let sc = new SphericalCoordinate3D(10, Math.PI / 3, Math.PI);
+
+// 将坐标围绕 x 轴旋转 60°，转换为直角坐标，输出结果
+let rc = sc.rotateX(Math.PI / 3).toRC().equal();
+```
+
+**\*用于处理空间直角坐标的 RectangularCoordinate3D 组件 和 用于处理空间柱面坐标的 CylindricalCoordinate3D 组件 的使用方法相同**
+
+---
+
+使用 PolarCoordinate2D 组件处理平面极坐标：
+
+```js
+let pc = new PolarCoordinate2D(10, Math.PI / 3);
+
+// 将坐标 x 方向缩放 0.2 倍，y 方向缩放 3 倍，转换为直角坐标，输出结果
+let rc = pc.scale(0.2, 3).toRC().equal();
+```
+
+**\*处理平面直角坐标的 RectangularCoordinate2D 组件 使用方法相同**
+
+---
+
 使用 SystemSwitcherPoint3D 将3维空间坐标点进行坐标系统间的转换：
 
 ```js
@@ -88,20 +131,22 @@ let ssp3d = new SystemSwitcherPoint3D(3, 0, 4.5);
 let pointSC = ssp3d.toSC();
 
 // 转换到 柱面坐标系(CC)
-let { r, theta, z } = ssp3d.toCC();
+let { rho, phi, z } = ssp3d.toCC();
 
 // 柱面坐标系(CC)坐标 转换到 直角坐标系(RC)
-let pointRC = ssp3d.fromCC(r, theta, z).toRC();
+let pointRC = ssp3d.fromCC(rho, phi, z).toRC();
 ```
 
 SystemSwitcherPoint3D 目前支持的坐标系统包括：
+
 * 直角坐标系(RC)
 * 柱面坐标系(CC)
 * 球坐标系(SC)
 
-SystemSwitcherPoint2D 的使用方法与 SystemSwitcherPoint3D 类同，具体可见 API 说明。
+**\*SystemSwitcherPoint2D 的使用方法与 SystemSwitcherPoint3D 类同，具体可见 API 说明。**
 
 SystemSwitcherPoint2D 目前支持的坐标系统包括：
+
 * 直角坐标系(RC)
 * 极坐标系(PC)
 
@@ -119,7 +164,7 @@ let res = tp3d
 	.equal();
 ```
 
-TransformerPoint2D 的使用方法与 TransformerPoint3D 类同，具体可见 API 说明。
+**\*TransformerPoint2D 的使用方法与 TransformerPoint3D 类同，具体可见 API 说明。**
 
 ## API
 
