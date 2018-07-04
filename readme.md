@@ -122,40 +122,40 @@ let rc = pc.scale(0.2, 3).toRC().equal();
 
 ---
 
-使用 SystemSwitcherPoint3D 将3维空间坐标点进行坐标系统间的转换：
+使用 SystemSwitcher3D 将3维空间坐标点进行坐标系统间的转换：
 
 ```js
-let ssp3d = new SystemSwitcherPoint3D(3, 0, 4.5);
+let ssp3d = new SystemSwitcher3D(3, 0, 4.5);
 
 // 将直角系(RC)坐标 (3, 0, 4.5) 转换到 球坐标系(SC)
-let pointSC = ssp3d.toSC();
+let SC = ssp3d.toSC();
 
 // 转换到 柱面坐标系(CC)
 let { rho, phi, z } = ssp3d.toCC();
 
 // 柱面坐标系(CC)坐标 转换到 直角坐标系(RC)
-let pointRC = ssp3d.fromCC(rho, phi, z).toRC();
+let RC = ssp3d.fromCC(rho, phi, z).toRC();
 ```
 
-SystemSwitcherPoint3D 目前支持的坐标系统包括：
+SystemSwitcher3D 目前支持的坐标系统包括：
 
 * 直角坐标系(RC)
 * 柱面坐标系(CC)
 * 球坐标系(SC)
 
-*\*SystemSwitcherPoint2D 的使用方法与 SystemSwitcherPoint3D 类同，具体可见 API 说明。*
+*\*SystemSwitcher2D 的使用方法与 SystemSwitcher3D 类同，具体可见 API 说明。*
 
-SystemSwitcherPoint2D 目前支持的坐标系统包括：
+SystemSwitcher2D 目前支持的坐标系统包括：
 
 * 直角坐标系(RC)
 * 极坐标系(PC)
 
 ---
 
-使用 TransformerPoint3D 对3维空间直角系坐标点进行变换操作：
+使用 Transformer3D 对3维空间直角系坐标点进行变换操作：
 
 ```js
-let tp3d = new TransformerPoint3D(3, 0, 4.5);
+let tp3d = new Transformer3D(3, 0, 4.5);
 
 let res = tp3d
 	.rotateZ(Math.PI / 4) // 绕 Z 轴旋转 45°
@@ -164,11 +164,11 @@ let res = tp3d
 	.equal();
 ```
 
-*\*TransformerPoint2D 的使用方法与 TransformerPoint3D 类同，具体可见 API 说明。*
+*\*Transformer2D 的使用方法与 Transformer3D 类同，具体可见 API 说明。*
 
 ## API
 
-### SystemSwitcherPoint2D 平面坐标系统转换 模块
+### SystemSwitcher2D 平面坐标系统转换 组件
 
 `from(a, b, system = 'rc')` 设定起始平面坐标
 
@@ -188,7 +188,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### TransformerPoint2D 平面坐标变换 模块
+### Transformer2D 平面坐标变换 组件
 
 `from(x, y)` 设定变换起始平面直角坐标
 
@@ -207,9 +207,65 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 参数 angle 指定旋转角度
 参数 pivot 指定旋转轴心点坐标，默认绕原点旋转
 
+`inverse(axis = 'y')` 坐标反演，用于左右手性更换
+
+参数 axis 指定反演轴，可选参数：'x'、'y'，缺省值为：'y'
+
 ---
 
-### SystemSwitcherPoint3D 空间坐标系统转换 模块
+### BaseCoordinate2D 平面坐标处理 基类
+
+*参数详情见 SystemSwitcher2D 和 Transformer2D API文档*
+
+`from(a, b, system = 'rc')` 设定起始坐标 (a, b)
+
+`translate(dx, dy)` 坐标平移
+
+`scale(sx, sy)` 坐标缩放
+
+`rotate(angle, pivot = { x: 0, y: 0 })` 坐标旋转
+
+`inverse(axis = 'y')` 坐标反演，用于左右手性更换
+
+`equal()` 获取最终变换结果坐标
+
+---
+
+### Coordinate2D 平面坐标处理 组件
+
+*在 BaseCoordinate2D 接口之上，另有：*
+
+`rc(x, y)` 设定起始直角坐标 (x, y)
+
+`pc(rho, theta)` 设定起始极坐标 (ρ, θ)
+
+`toRC()` 转换坐标至直角坐标系
+
+`toPC()` 转换坐标至极坐标系
+
+---
+
+### RectangularCoordinate2D 平面直角坐标处理 组件
+
+*在 BaseCoordinate2D 接口之上，另有：*
+
+`from(x, y)` 设定起始平面直角坐标 (x, y)
+
+`toPC()` 转换坐标至极坐标系
+
+---
+
+### PolarCoordinate2D 平面极坐标处理 组件
+
+*在 BaseCoordinate2D 接口之上，另有：*
+
+`from(rho, theta)` 设定起始平面极坐标 (ρ, θ)
+
+`toRC()` 转换坐标至直角坐标系
+
+---
+
+### SystemSwitcher3D 空间坐标系统转换 模块
 
 `from(a, b, c, system = 'rc')` 设定起始空间坐标
 
@@ -235,7 +291,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### TransformerPoint3D 空间坐标变换 模块
+### Transformer3D 空间坐标变换 模块
 
 `from(x, y, z)` 设定变换起始空间直角坐标
 
@@ -265,6 +321,92 @@ system 参数用于指定坐标的系统类型，可设定值有：
 可选参数 options.axialVector 用于指定旋转轴向量，参考格式：{ x: 1, y: 1, z: 1 }
 参数 options.axialVector 的设定执行优先于参数 options.axis
 本方法默认缺省绕 Z 轴旋转坐标
+
+`inverse(axis = 'y')` 坐标反演，用于左右手性更换
+
+参数 axis 指定反演轴，可选参数：'x'、'y'，缺省值为：'y'
+
+---
+
+### BaseCoordinate3D 空间坐标处理 基类
+
+*参数详情见 SystemSwitcher3D 和 Transformer3D API文档*
+
+`from(a, b, c, system = 'rc')` 设定起始坐标 (a, b, c)
+
+`translate(dx, dy, dz)` 坐标平移
+
+`scale(sx, sy, sz)` 坐标缩放
+
+`rotateX(angle)` 坐标绕 X 轴旋转
+
+`rotateY(angle)` 坐标绕 Y 轴旋转
+
+`rotateZ(angle)` 坐标绕 Z 轴旋转
+
+`rotateVector(angle, x, y, z)` 坐标绕 任意轴 旋转
+
+`rotate(angle, { axis, axialVector } = { axis: 'z' })` 坐标旋转
+
+`inverse(axis = 'y')` 坐标反演，用于左右手性更换
+
+`equal()` 获取最终变换结果坐标
+
+---
+
+### Coordinate3D 空间坐标处理 组件
+
+*在 BaseCoordinate3D 接口之上，另有：*
+
+`rc(x, y, z)` 设定起始直角坐标 (x, y, z)
+
+`cc(rho, phi, z)` 设定起始柱面坐标 (ρ, φ, z)
+
+`sc(r, theta, phi)` 设定起始球坐标 (r, θ, φ)
+
+`toRC()` 转换坐标至直角坐标系
+
+`toCC()` 转换坐标至柱面坐标系
+
+`toSC()` 转换坐标至球极坐标系
+
+---
+
+### RectangularCoordinate3D 空间直角坐标处理 组件
+
+*在 BaseCoordinate3D 接口之上，另有：*
+
+`from(x, y, z)` 设定起始空间直角坐标 (x, y, z)
+
+`toCC()` 转换坐标至柱面坐标系
+
+`toSC()` 转换坐标至球极坐标系
+
+---
+
+### CylindricalCoordinate3D 空间直角坐标处理 组件
+
+*在 BaseCoordinate3D 接口之上，另有：*
+
+`from(rho, phi, z)` 设定起始空间柱面坐标 (ρ, φ, z)
+
+`toRC()` 转换坐标至直角坐标系
+
+`toSC()` 转换坐标至球极坐标系
+
+---
+
+### SphericalCoordinate3D 空间直角坐标处理 组件
+
+*在 BaseCoordinate3D 接口之上，另有：*
+
+`from(r, theta, phi)` 设定起始空间球坐标 (r, θ, φ)
+
+`toRC()` 转换坐标至直角坐标系
+
+`toCC()` 转换坐标至柱面坐标系
+
+---
 
 ## 许可证书
 
