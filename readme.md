@@ -168,7 +168,9 @@ let res = tp3d
 
 ## API
 
-### SystemSwitcher2D 平面坐标系统转换 组件
+### Coordinate 2D 库组件：
+
+#### SystemSwitcher2D 平面坐标系统转换 组件
 
 `from(a, b, system = 'rc')` 设定起始平面坐标
 
@@ -188,7 +190,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### Transformer2D 平面坐标变换 组件
+#### Transformer2D 平面坐标变换 组件
 
 `from(x, y)` 设定变换起始平面直角坐标
 
@@ -213,7 +215,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### BaseCoordinate2D 平面坐标处理 基类
+#### BaseCoordinate2D 平面坐标处理 基类
 
 *参数详情见 SystemSwitcher2D 和 Transformer2D API文档*
 
@@ -231,7 +233,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### Coordinate2D 平面坐标处理 组件
+#### Coordinate2D 平面坐标处理 组件
 
 *在 BaseCoordinate2D 接口之上，另有：*
 
@@ -245,7 +247,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### RectangularCoordinate2D 平面直角坐标处理 组件
+#### RectangularCoordinate2D 平面直角坐标处理 组件
 
 *在 BaseCoordinate2D 接口之上，另有：*
 
@@ -255,7 +257,7 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### PolarCoordinate2D 平面极坐标处理 组件
+#### PolarCoordinate2D 平面极坐标处理 组件
 
 *在 BaseCoordinate2D 接口之上，另有：*
 
@@ -265,7 +267,9 @@ system 参数用于指定坐标的系统类型，可设定值有：'rc' 直角�
 
 ---
 
-### SystemSwitcher3D 空间坐标系统转换 模块
+### Coordinate 3D 库组件：
+
+#### SystemSwitcher3D 空间坐标系统转换 模块
 
 `from(a, b, c, system = 'rc')` 设定起始空间坐标
 
@@ -291,7 +295,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### Transformer3D 空间坐标变换 模块
+#### Transformer3D 空间坐标变换 模块
 
 `from(x, y, z)` 设定变换起始空间直角坐标
 
@@ -328,7 +332,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### BaseCoordinate3D 空间坐标处理 基类
+#### BaseCoordinate3D 空间坐标处理 基类
 
 *参数详情见 SystemSwitcher3D 和 Transformer3D API文档*
 
@@ -354,7 +358,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### Coordinate3D 空间坐标处理 组件
+#### Coordinate3D 空间坐标处理 组件
 
 *在 BaseCoordinate3D 接口之上，另有：*
 
@@ -372,7 +376,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### RectangularCoordinate3D 空间直角坐标处理 组件
+#### RectangularCoordinate3D 空间直角坐标处理 组件
 
 *在 BaseCoordinate3D 接口之上，另有：*
 
@@ -384,7 +388,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### CylindricalCoordinate3D 空间直角坐标处理 组件
+#### CylindricalCoordinate3D 空间直角坐标处理 组件
 
 *在 BaseCoordinate3D 接口之上，另有：*
 
@@ -396,7 +400,7 @@ system 参数用于指定坐标的系统类型，可设定值有：
 
 ---
 
-### SphericalCoordinate3D 空间直角坐标处理 组件
+#### SphericalCoordinate3D 空间直角坐标处理 组件
 
 *在 BaseCoordinate3D 接口之上，另有：*
 
