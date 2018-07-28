@@ -47,7 +47,7 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至直角坐标系
    * 
-   * @return {RectangularCoordinate3D} 返回 直角坐标 对象
+   * @return {Object} 返回 直角坐标 对象
    */
   toRC() {
     return this.point.toRC();
@@ -56,7 +56,7 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至球极坐标系
    * 
-   * @return {SphericalCoordinate3D} 返回 球坐标 对象
+   * @return {Object} 返回 球坐标 对象
    */
   toSC() {
     return this.point.toSC();

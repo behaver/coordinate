@@ -41,7 +41,7 @@ class RectangularCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至柱面坐标系
    * 
-   * @return {CylindricalCoordinate3D} 返回 柱面坐标 对象
+   * @return {Object} 返回 柱面坐标 对象
    */
   toCC() {
     return this.point.toCC();
@@ -50,7 +50,7 @@ class RectangularCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至球极坐标系
    * 
-   * @return {SphericalCoordinate3D} 返回 球坐标 对象
+   * @return {Object} 返回 球坐标 对象
    */
   toSC() {
     return this.point.toSC();

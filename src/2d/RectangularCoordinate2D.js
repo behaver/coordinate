@@ -38,7 +38,7 @@ class RectangularCoordinate2D extends BaseCoordinate2D {
   /**
    * 转换坐标至极坐标系
    * 
-   * @return {PolarCoordinate2D} 返回 极坐标 对象
+   * @return {Object} 返回 极坐标 对象
    */
   toPC() {
     return this.point.toPC();

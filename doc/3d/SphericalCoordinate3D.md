@@ -56,3 +56,5 @@ let rc = sc.toRC();
 ## 许可证书
 
 The MIT license.
+
+[返回主页面](../../readme.md)
