@@ -94,10 +94,6 @@ describe('#BaseCoordinate3D', () => {
         (new BaseCoordinate3D(1, 2, 0.23)).translate(1, 2, 0.23);
       }).not.to.throw();
     });
-
-    it('Vreify the result from translate()', () => {
-      expect((new BaseCoordinate3D(1, 2, 0.23)).translate(-1, -2, -0.23).equal()).to.deep.equal({ x: 0, y: 0, z: 0 });
-    })
   });
 
   describe('#scale', () => {
@@ -115,9 +111,6 @@ describe('#BaseCoordinate3D', () => {
         (new BaseCoordinate3D(1, 2, 0.23)).scale(1, 2, 0.23);
       }).not.to.throw();
     });
-    it('Vreify the result from scale()', () => {
-      expect((new BaseCoordinate3D(1, 2, 0.23)).scale(-1, 2, 1).equal()).to.deep.equal({ x: -1, y: 4, z: 0.23 });
-    })
   });
 
   describe('#rotateX', () => {
@@ -131,10 +124,6 @@ describe('#BaseCoordinate3D', () => {
       expect(() => {
         (new BaseCoordinate3D(1, 2, 0.23)).rotateX(Math.PI / 2);
       }).not.to.throw();
-    });
-
-    it('Vreify the result from rotateX()', () => {
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateX(Math.PI / 2).equal()).to.deep.equal({ x: 1, y: -3, z: 2 });
     });
   });
 
@@ -150,10 +139,6 @@ describe('#BaseCoordinate3D', () => {
         (new BaseCoordinate3D(1, 2, 0.23)).rotateY(Math.PI / 2);
       }).not.to.throw();
     });
-
-    it('Vreify the result from rotateY()', () => {
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateY(Math.PI / 2).equal()).to.deep.equal({ x: 3, y: 2, z: -0.9999999999999998 });
-    });
   });
 
   describe('#rotateZ', () => {
@@ -168,20 +153,10 @@ describe('#BaseCoordinate3D', () => {
         (new BaseCoordinate3D(1, 2, 0.23)).rotateZ(Math.PI / 2);
       }).not.to.throw();
     });
-
-    it('Vreify the result from rotateZ()', () => {
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateZ(Math.PI / 2).equal()).to.deep.equal({ x: -2, y: 1.0000000000000002, z: 3 });
-    });
   });
 
   describe('#rotateVector', () => {
-    it('Verify the result form rotateVector().', () => {
-      expect((new BaseCoordinate3D(1, 0, 1)).rotateVector(0.5 * Math.PI, 0, 4, 0).equal()).to.deep.equal({ x: 1, y: 0, z: -0.9999999999999997 });
-      expect((new BaseCoordinate3D(2, 0, 2)).rotateVector(0.5 * Math.PI, 0, 4, 0).equal()).to.deep.equal({ x: 2, y: 0, z: -1.9999999999999993 });
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateVector(Math.PI / 2, 4, 0, 0).equal()).to.deep.equal({ x: 1, y: -3, z: 2.000000000000001 });
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateVector(Math.PI / 2, 0, 3, 0).equal()).to.deep.equal({ x: 3, y: 2, z: -0.9999999999999993 });
-      expect((new BaseCoordinate3D(1, 2, 3)).rotateVector(Math.PI / 2, 0, 0, 2).equal()).to.deep.equal({ x: -2, y: 1.0000000000000004, z: 3 });
-    });
+    
   });
 
   describe('#rotate', () => {
@@ -244,21 +219,5 @@ describe('#BaseCoordinate3D', () => {
         (new BaseCoordinate3D(1, 2, 0.23)).inverse('z');
       }).not.to.throw();
     })
-
-    it('Vreify the result from inverse.', () => {
-      expect((new BaseCoordinate3D(1, 2, 0.23)).inverse('x').equal()).to.deep.equal({ 'x': -1, 'y': 2, 'z': 0.23 });
-      expect((new BaseCoordinate3D(1, 2, 0.23)).inverse('y').equal()).to.deep.equal({ 'x': 1, 'y': -2, 'z': 0.23 });
-      expect((new BaseCoordinate3D(1, 2, 0.23)).inverse('z').equal()).to.deep.equal({ 'x': 1, 'y': 2, 'z': -0.23 });
-    })
   })
-
-  describe('#equal', () => {
-    it('The coordinate has not been transformed should equal the object itself.', () => {
-      expect((new BaseCoordinate3D(1, 2, 0.23)).equal()).to.deep.equal({ x: 1, y: 2, z: 0.23 });
-    })
-
-    it('Verify the result form multi-transform with chain.', () => {
-      expect((new BaseCoordinate3D(1, 2, 0.23)).scale(-2, 1, 2).translate(-2, 2, 1).equal()).to.deep.equal({ x: -4, y: 4, z: 1.46 });
-    })
-  });
 })

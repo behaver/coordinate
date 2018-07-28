@@ -86,9 +86,38 @@ describe('#PolarCoordinate2D', () => {
     })
   })
 
+  describe('#equal', () => {
+    it('The return of method equal should be a Object.', () => {
+      expect((new PolarCoordinate2D(1, 1)).equal()).to.be.a('Object');
+    });
+    it('The return of equal should be right.', () => {
+      expect((new PolarCoordinate2D(1, 2)).equal()).to.deep.equal({ rho: 1, theta: 2 });
+    });
+  });
+
   describe('#toRC', () => {
-    it('Verify the result from toRC().equal().', () => {
-      expect((new PolarCoordinate2D(1, 1)).toRC().equal()).to.deep.equal({ x: 0.5403023058681398, y: 0.8414709848078965 });
+    it('Verify the result from toRC().', () => {
+      expect((new PolarCoordinate2D(1, 1)).toRC()).to.deep.equal({ x: 0.5403023058681398, y: 0.8414709848078965 });
     })
+  });
+
+  describe('#get rho', () => {
+    it('The return of get rho should be a number.', () => {
+      expect((new PolarCoordinate2D(1, 1)).rho).to.be.a('Number');
+    });
+    it('The return of get rho should be same as the res of equal().', () => {
+      let pc = (new PolarCoordinate2D(1, 1)).rotate(Math.PI / 3).scale(2, -1);
+      expect(pc.equal().rho).to.equal(pc.rho);
+    });
+  });
+
+  describe('#get theta', () => {
+    it('The return of get theta should be a number.', () => {
+      expect((new PolarCoordinate2D(1, 1)).theta).to.be.a('Number');
+    });
+    it('The return of get theta should be same as the res of equal().', () => {
+      let pc = (new PolarCoordinate2D(1, 1)).rotate(Math.PI / 3).scale(2, -1);
+      expect(pc.equal().theta).to.equal(pc.theta);
+    });
   });
 })

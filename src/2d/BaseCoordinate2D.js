@@ -9,7 +9,7 @@ const Transformer2D = require('./Transformer2D');
  * BaseCoordinate2D 为 平面坐标 变换操作的基类
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 1.1.0
  */
 class BaseCoordinate2D {
 
@@ -26,9 +26,7 @@ class BaseCoordinate2D {
   constructor(a, b, system = 'rc') {
     this.point = new SystemSwitcher2D(a, b, system);
     this.transformer = new Transformer2D();
-
-    // 转换结果坐标系统
-    this.system = system;
+    this.cache = this.point.to(system);
   }
 
   /**
@@ -45,7 +43,8 @@ class BaseCoordinate2D {
    */
   from(a, b, system = 'rc') {
     this.point.from(a, b, system);
-    this.system = system;
+    this.cache = this.point.to(system);
+
     return this;
   }
 
@@ -63,6 +62,10 @@ class BaseCoordinate2D {
       .translate(dx, dy)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -80,6 +83,10 @@ class BaseCoordinate2D {
       .scale(sx, sy)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -100,6 +107,10 @@ class BaseCoordinate2D {
       .rotate(angle, pivot)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -117,16 +128,11 @@ class BaseCoordinate2D {
       .inverse(axis)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y);
-    return this;
-  }
 
-  /**
-   * 获取最终变换结果坐标
-   * 
-   * @return {Object}           返回 平面点坐标 对象
-   */
-  equal() {
-    return this.point.to(this.system);
+    // 清除缓存
+    this.cache = null;
+
+    return this;
   }
 }
 

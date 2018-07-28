@@ -9,7 +9,7 @@ const Transformer3D = require('./Transformer3D');
  * BaseCoordinate3D 为 空间坐标 变换操作的基类
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 1.1.0
  */
 class BaseCoordinate3D {
 
@@ -27,9 +27,7 @@ class BaseCoordinate3D {
   constructor(a, b, c, system = 'rc') {
     this.point = new SystemSwitcher3D(a, b, c, system);
     this.transformer = new Transformer3D();
-
-    // 转换结果坐标系统
-    this.system = system;
+    this.cache = this.point.to(system);
   }
 
   /**
@@ -48,7 +46,8 @@ class BaseCoordinate3D {
    */
   from(a, b, c, system = 'rc') {
     this.point.from(a, b, c, system);
-    this.system = system;
+    this.cache = this.point.to(system);
+
     return this;
   }
 
@@ -67,6 +66,10 @@ class BaseCoordinate3D {
       .translate(dx, dy, dz)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -85,6 +88,10 @@ class BaseCoordinate3D {
       .scale(sx, sy, sz)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -103,6 +110,10 @@ class BaseCoordinate3D {
       .rotateX(angle)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -121,6 +132,10 @@ class BaseCoordinate3D {
       .rotateY(angle)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -139,6 +154,10 @@ class BaseCoordinate3D {
       .rotateZ(angle)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -161,6 +180,10 @@ class BaseCoordinate3D {
       .rotateVector(angle, x, y, z)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -183,6 +206,10 @@ class BaseCoordinate3D {
       .rotate(angle, { axis, axialVector })
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
+
+    // 清除缓存
+    this.cache = null;
+
     return this;
   }
 
@@ -200,16 +227,11 @@ class BaseCoordinate3D {
       .inverse(axis)
       .equal();
     this.point.fromRC(rc_trans.x, rc_trans.y, rc_trans.z);
-    return this;
-  }
 
-  /**
-   * 获取最终变换结果坐标
-   * 
-   * @return {Object}                    空间点坐标 对象
-   */
-  equal() {
-    return this.point.to(this.system);
+    // 清除缓存
+    this.cache = null;
+
+    return this;
   }
 }
 

@@ -91,10 +91,6 @@ describe('#BaseCoordinate2D', () => {
         (new BaseCoordinate2D(1, 0.23)).translate(1, 0.23);
       }).not.to.throw();
     });
-
-    it('Vreify the result from translate()', () => {
-      expect((new BaseCoordinate2D(1, 0.23)).translate(-1, -0.23).equal()).to.deep.equal({ x: 0, y: 0 });
-    })
   });
 
   describe('#scale', () => {
@@ -112,9 +108,6 @@ describe('#BaseCoordinate2D', () => {
         (new BaseCoordinate2D(1, 0.23)).scale(1, 0.23);
       }).not.to.throw();
     });
-    it('Vreify the result from scale()', () => {
-      expect((new BaseCoordinate2D(1, 0.23)).scale(-1, 2).equal()).to.deep.equal({ x: -1, y: 0.46 });
-    })
   });
 
   describe('#rotate', () => {
@@ -161,20 +154,5 @@ describe('#BaseCoordinate2D', () => {
         (new BaseCoordinate2D(1, 0.23)).inverse('y');
       }).not.to.throw();
     })
-
-    it('Vreify the result from inverse.', () => {
-      expect((new BaseCoordinate2D(1, 0.23)).inverse('x').equal()).to.deep.equal({ 'x': -1, 'y': 0.23 });
-      expect((new BaseCoordinate2D(1, 0.23)).inverse('y').equal()).to.deep.equal({ 'x': 1, 'y': -0.23 });
-    })
   })
-
-  describe('#equal', () => {
-    it('The coordinate has not been transformed should equal the object itself.', () => {
-      expect((new BaseCoordinate2D(1, 0.23)).equal()).to.deep.equal({ x: 1, y: 0.23 });
-    })
-
-    it('Verify the result form multi-transform with chain.', () => {
-      expect((new BaseCoordinate2D(1, 0.23)).scale(-2, 2).translate(-2, 1).equal()).to.deep.equal({ x: -4, y: 1.46 });
-    })
-  });
 });

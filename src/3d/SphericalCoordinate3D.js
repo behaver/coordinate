@@ -1,6 +1,8 @@
 'use strict';
 
 const BaseCoordinate3D = require('./BaseCoordinate3D');
+const RectangularCoordinate3D = require('./RectangularCoordinate3D');
+const CylindricalCoordinate3D = require('./CylindricalCoordinate3D');
 
 /**
  * SphericalCoordinate3D
@@ -8,7 +10,7 @@ const BaseCoordinate3D = require('./BaseCoordinate3D');
  * SphericalCoordinate3D 对象用于 空间球坐标 的变换操作
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 1.1.0
  */
 class SphericalCoordinate3D extends BaseCoordinate3D {
 
@@ -45,21 +47,71 @@ class SphericalCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至直角坐标系
    * 
-   * @return {SphericalCoordinate3D} 返回 this 引用
+   * @return {RectangularCoordinate3D} 返回 直角坐标 对象
    */
   toRC() {
-    this.system = 'rc';
-    return this;
+    return this.point.toRC();
   }
 
   /**
    * 转换坐标至柱面坐标系
    * 
-   * @return {SphericalCoordinate3D} 返回 this 引用
+   * @return {CylindricalCoordinate3D} 返回 柱面坐标 对象
    */
   toCC() {
-    this.system = 'cc';
-    return this;
+    return this.point.toCC();
+  }
+
+  /**
+   * 获取球坐标 r 值
+   * 
+   * @return {Number} 球坐标 r 值
+   */
+  get r() {
+    if (!this.cache) {
+      this.cache = this.point.toSC();
+    }
+
+    return this.cache.r;
+  }
+
+  /**
+   * 获取球坐标 theta 值
+   * 
+   * @return {Number} 球坐标 theta 值
+   */
+  get theta() {
+    if (!this.cache) {
+      this.cache = this.point.toSC();
+    }
+
+    return this.cache.theta;
+  }
+
+  /**
+   * 获取球坐标 phi 值
+   * 
+   * @return {Number} 球坐标 phi 值
+   */
+  get phi() {
+    if (!this.cache) {
+      this.cache = this.point.toSC();
+    }
+
+    return this.cache.phi;
+  }
+
+  /**
+   * 获取结果坐标
+   * 
+   * @return {Object} 球坐标值对象
+   */
+  equal() {
+    if (!this.cache) {
+      this.cache = this.point.toSC();
+    }
+
+    return { r: this.cache.r, theta: this.cache.theta, phi: this.cache.phi }
   }
 }
 

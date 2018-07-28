@@ -1,6 +1,8 @@
 'use strict';
 
 const BaseCoordinate3D = require('./BaseCoordinate3D');
+const RectangularCoordinate3D = require('./RectangularCoordinate3D');
+const SphericalCoordinate3D = require('./SphericalCoordinate3D');
 
 /**
  * CylindricalCoordinate3D
@@ -8,7 +10,7 @@ const BaseCoordinate3D = require('./BaseCoordinate3D');
  * CylindricalCoordinate3D 对象用于 空间柱面坐标 的变换操作
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 1.1.0
  */
 class CylindricalCoordinate3D extends BaseCoordinate3D {
 
@@ -45,21 +47,71 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   /**
    * 转换坐标至直角坐标系
    * 
-   * @return {CylindricalCoordinate3D} 返回 this 引用
+   * @return {RectangularCoordinate3D} 返回 直角坐标 对象
    */
   toRC() {
-    this.system = 'rc';
-    return this;
+    return this.point.toRC();
   }
 
   /**
    * 转换坐标至球极坐标系
    * 
-   * @return {CylindricalCoordinate3D} 返回 this 引用
+   * @return {SphericalCoordinate3D} 返回 球坐标 对象
    */
   toSC() {
-    this.system = 'sc';
-    return this;
+    return this.point.toSC();
+  }
+
+  /**
+   * 获取柱面坐标 rho 值
+   * 
+   * @return {Number} 柱面坐标 rho 值
+   */
+  get rho() {
+    if (!this.cache) {
+      this.cache = this.point.toCC();
+    }
+
+    return this.cache.rho;
+  }
+
+  /**
+   * 获取柱面坐标 phi 值
+   * 
+   * @return {Number} 柱面坐标 phi 值
+   */
+  get phi() {
+    if (!this.cache) {
+      this.cache = this.point.toCC();
+    }
+
+    return this.cache.phi;
+  }
+
+  /**
+   * 获取柱面坐标 z 值
+   * 
+   * @return {Number} 柱面坐标 z 值
+   */
+  get z() {
+    if (!this.cache) {
+      this.cache = this.point.toCC();
+    }
+
+    return this.cache.z;
+  }
+
+  /**
+   * 获取结果坐标
+   * 
+   * @return {Object} 柱面坐标值对象
+   */
+  equal() {
+    if (!this.cache) {
+      this.cache = this.point.toCC();
+    }
+
+    return { rho: this.cache.rho, phi: this.cache.phi, z: this.cache.z }
   }
 }
 

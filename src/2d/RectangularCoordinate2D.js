@@ -1,6 +1,7 @@
 'use strict';
 
 const BaseCoordinate2D = require('./BaseCoordinate2D');
+const PolarCoordinate2D = require('./PolarCoordinate2D');
 
 /**
  * RectangularCoordinate2D
@@ -8,7 +9,7 @@ const BaseCoordinate2D = require('./BaseCoordinate2D');
  * RectangularCoordinate2D 对象用于 平面直角坐标 的变换操作
  *
  * @author 董 三碗 <qianxing@yeah.net>
- * @version 1.0.0
+ * @version 1.1.0
  */
 class RectangularCoordinate2D extends BaseCoordinate2D {
 
@@ -37,11 +38,49 @@ class RectangularCoordinate2D extends BaseCoordinate2D {
   /**
    * 转换坐标至极坐标系
    * 
-   * @return {RectangularCoordinate2D} 返回 this 引用
+   * @return {PolarCoordinate2D} 返回 极坐标 对象
    */
   toPC() {
-    this.system = 'pc';
-    return this;
+    return this.point.toPC();
+  }
+
+  /**
+   * 获取直角坐标 x 值
+   * 
+   * @return {Number} 直角坐标 x 值
+   */
+  get x() {
+    if (!this.cache) {
+      this.cache = this.point.toRC();
+    }
+
+    return this.cache.x;
+  }
+
+  /**
+   * 获取直角坐标 y 值
+   * 
+   * @return {Number} 直角坐标 y 值
+   */
+  get y() {
+    if (!this.cache) {
+      this.cache = this.point.toRC();
+    }
+
+    return this.cache.y;
+  }
+
+  /**
+   * 获取结果坐标
+   * 
+   * @return {Object} 直角坐标值对象
+   */
+  equal() {
+    if (!this.cache) {
+      this.cache = this.point.toRC();
+    }
+
+    return { x: this.cache.x, y: this.cache.y }
   }
 }
 

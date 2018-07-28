@@ -4,7 +4,6 @@
 const SystemSwitcher2D = require('./src/2d/SystemSwitcher2D');
 const Transformer2D = require('./src/2d/Transformer2D');
 const BaseCoordinate2D = require('./src/2d/BaseCoordinate2D');
-const Coordinate2D = require('./src/2d/Coordinate2D');
 const PolarCoordinate2D = require('./src/2d/PolarCoordinate2D');
 const RectangularCoordinate2D = require('./src/2d/RectangularCoordinate2D');
 
@@ -12,7 +11,6 @@ const RectangularCoordinate2D = require('./src/2d/RectangularCoordinate2D');
 const SystemSwitcher3D = require('./src/3d/SystemSwitcher3D');
 const Transformer3D = require('./src/3d/Transformer3D');
 const BaseCoordinate3D = require('./src/3d/BaseCoordinate3D');
-const Coordinate3D = require('./src/3d/Coordinate3D');
 const RectangularCoordinate3D = require('./src/3d/RectangularCoordinate3D');
 const CylindricalCoordinate3D = require('./src/3d/CylindricalCoordinate3D');
 const SphericalCoordinate3D = require('./src/3d/SphericalCoordinate3D');
@@ -22,7 +20,6 @@ module.exports = {
   SystemSwitcher2D, 
   Transformer2D, 
   BaseCoordinate2D, 
-  Coordinate2D,
   PolarCoordinate2D,
   RectangularCoordinate2D,
 
@@ -30,8 +27,7 @@ module.exports = {
   SystemSwitcher3D, 
   Transformer3D, 
   BaseCoordinate3D, 
-  Coordinate3D,
   RectangularCoordinate3D,
   CylindricalCoordinate3D,
-  SphericalCoordinate3D;
+  SphericalCoordinate3D,
 };

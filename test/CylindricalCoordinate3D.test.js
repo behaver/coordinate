@@ -1,6 +1,7 @@
 'use strict';
 
 const CylindricalCoordinate3D = require('../src/3d/CylindricalCoordinate3D');
+
 const expect = require("chai").expect;
 
 describe('#CylindricalCoordinate3D', () => {
@@ -86,15 +87,54 @@ describe('#CylindricalCoordinate3D', () => {
     })
   })
 
+  describe('#equal', () => {
+    it('The return of method equal should be a Object.', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).equal()).to.be.a('Object');
+    });
+    it('The return of equal should be right.', () => {
+      expect((new CylindricalCoordinate3D(1, 2, 3)).equal()).to.deep.equal({ rho: 1, phi: 2, z: 3 });
+    });
+  });
+
   describe('#toRC', () => {
-    it('Verify the result from toRC().equal().', () => {
-      expect((new CylindricalCoordinate3D(1, 1, 1)).toRC().equal()).to.deep.equal({ x: 0.5403023058681398, y: 0.8414709848078965, z: 1 });
+    it('Verify the result from toRC().', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).toRC()).to.deep.equal({ x: 0.5403023058681398, y: 0.8414709848078965, z: 1 });
     })
   });
 
   describe('#toSC', () => {
-    it('Verify the result from toSC().equal().', () => {
-      expect((new CylindricalCoordinate3D(1, 1, 1)).toSC().equal()).to.deep.equal({ r: 1.4142135623730951, theta: 0.7853981633974483, phi: 1 });
+    it('Verify the result from toSC().', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).toSC()).to.deep.equal({ r: 1.4142135623730951, theta: 0.7853981633974483, phi: 1 });
     })
+  });
+
+  describe('#get rho', () => {
+    it('The return of get rho should be a number.', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).rho).to.be.a('Number');
+    });
+    it('The return of get rho should be same as the res of equal().', () => {
+      let cc = (new CylindricalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(cc.equal().rho).to.equal(cc.rho);
+    });
+  });
+
+  describe('#get phi', () => {
+    it('The return of get phi should be a number.', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).phi).to.be.a('Number');
+    });
+    it('The return of get phi should be same as the res of equal().', () => {
+      let cc = (new CylindricalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(cc.equal().phi).to.equal(cc.phi);
+    });
+  });
+
+  describe('#get z', () => {
+    it('The return of get z should be a number.', () => {
+      expect((new CylindricalCoordinate3D(1, 1, 1)).z).to.be.a('Number');
+    });
+    it('The return of get z should be same as the res of equal().', () => {
+      let cc = (new CylindricalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(cc.equal().z).to.equal(cc.z);
+    });
   });
 })

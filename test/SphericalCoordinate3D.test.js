@@ -116,15 +116,54 @@ describe('#SphericalCoordinate3D', () => {
     })
   })
 
+  describe('#equal', () => {
+    it('The return of method equal should be a Object.', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).equal()).to.be.a('Object');
+    });
+    it('The return of equal should be right.', () => {
+      expect((new SphericalCoordinate3D(1, 2, 3)).equal()).to.deep.equal({ r: 1, theta: 2, phi: 3 });
+    });
+  });
+
   describe('#toRC', () => {
-    it('Verify the result from toRC().equal().', () => {
-      expect((new SphericalCoordinate3D(1, 1, 1)).toRC().equal()).to.deep.equal({ x: 0.4546487134128409, y: 0.7080734182735712, z: 0.5403023058681398 });
+    it('Verify the result from toRC().', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).toRC()).to.deep.equal({ x: 0.4546487134128409, y: 0.7080734182735712, z: 0.5403023058681398 });
     })
   });
 
   describe('#toCC', () => {
-    it('Verify the result from toCC().equal().', () => {
-      expect((new SphericalCoordinate3D(1, 1, 1)).toCC().equal()).to.deep.equal({ rho: 0.8414709848078965, phi: 1, z: 0.5403023058681398 });
+    it('Verify the result from toCC().', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).toCC()).to.deep.equal({ rho: 0.8414709848078965, phi: 1, z: 0.5403023058681398 });
     })
+  });
+
+  describe('#get r', () => {
+    it('The return of get r should be a number.', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).r).to.be.a('Number');
+    });
+    it('The return of get r should be same as the res of equal().', () => {
+      let sc = (new SphericalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(sc.equal().r).to.equal(sc.r);
+    });
+  });
+
+  describe('#get theta', () => {
+    it('The return of get theta should be a number.', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).theta).to.be.a('Number');
+    });
+    it('The return of get theta should be same as the res of equal().', () => {
+      let sc = (new SphericalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(sc.equal().theta).to.equal(sc.theta);
+    });
+  });
+
+  describe('#get phi', () => {
+    it('The return of get phi should be a number.', () => {
+      expect((new SphericalCoordinate3D(1, 1, 1)).phi).to.be.a('Number');
+    });
+    it('The return of get phi should be same as the res of equal().', () => {
+      let sc = (new SphericalCoordinate3D(1, 1, 1)).rotateX(Math.PI / 3).scale(2, 0.5, -1);
+      expect(sc.equal().phi).to.equal(sc.phi);
+    });
   });
 })
