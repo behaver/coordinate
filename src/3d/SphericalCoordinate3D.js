@@ -1,8 +1,6 @@
 'use strict';
 
 const BaseCoordinate3D = require('./BaseCoordinate3D');
-const RectangularCoordinate3D = require('./RectangularCoordinate3D');
-const CylindricalCoordinate3D = require('./CylindricalCoordinate3D');
 
 /**
  * SphericalCoordinate3D

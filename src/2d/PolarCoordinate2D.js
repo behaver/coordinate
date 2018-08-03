@@ -1,7 +1,6 @@
 'use strict';
 
 const BaseCoordinate2D = require('./BaseCoordinate2D');
-const RectangularCoordinate2D = require('./RectangularCoordinate2D');
 
 /**
  * PolarCoordinate2D
