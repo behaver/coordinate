@@ -15,5 +15,5 @@ module.exports = {
   BaseCoordinate3D, 
   RectangularCoordinate3D,
   CylindricalCoordinate3D,
-  SphericalCoordinate3D;
+  SphericalCoordinate3D,
 };
