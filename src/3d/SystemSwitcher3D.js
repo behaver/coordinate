@@ -11,9 +11,10 @@
 const switchers = {
   // 直角坐标 转 柱面坐标
   RCToCC: (x, y, z) => {
+    let phi = Math.atan2(y, x);
     return {
       rho: Math.sqrt(x * x + y * y),
-      phi: Math.atan2(y, x),
+      phi: phi < 0 ? phi + Math.PI * 2 : phi,
       z,
     }
   },
@@ -30,10 +31,11 @@ const switchers = {
   // 直角坐标 转 球坐标
   RCToSC: (x, y, z) => {
     let r = Math.sqrt(x * x + y * y + z * z);
+    let phi = Math.atan2(y, x);
     return {
       r,
       theta: r === 0 ? 0 : Math.acos(z / r),
-      phi: Math.atan2(y, x),
+      phi: phi < 0 ? phi + Math.PI * 2 : phi,
     }
   },
 
@@ -48,9 +50,10 @@ const switchers = {
 
   // 柱面坐标 转 球坐标
   CCToSC: (rho, phi, z) => {
+    let theta = Math.atan2(rho, z);
     return {
       r: Math.sqrt(rho * rho + z * z),
-      theta: Math.atan2(rho, z),
+      theta: theta < 0 ? theta + Math.PI * 2 : theta,
       phi,
     };
   },

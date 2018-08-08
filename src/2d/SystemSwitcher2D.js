@@ -9,9 +9,10 @@
 const switchers = {
   // 直角坐标 转 极坐标
   RCToPC: (x, y) => {
+    let theta = Math.atan2(y, x);
     return {
       rho: Math.sqrt(x * x + y * y),
-      theta: Math.atan2(y, x),
+      theta: theta < 0 ? theta + Math.PI * 2 : theta,
     };
   },
 
