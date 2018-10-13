@@ -1,6 +1,6 @@
 {
   "name": "@behaver/coordinate",
-  "version": "3.2.3",
+  "version": "3.3.0",
   "description": "A toolkit about coordinate.",
   "main": "index.js",
   "scripts": {
