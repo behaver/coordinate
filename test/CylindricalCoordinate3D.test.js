@@ -137,4 +137,28 @@ describe('#CylindricalCoordinate3D', () => {
       expect(cc.equal().z).to.equal(cc.z);
     });
   });
+
+  describe('set rho(rho)', () => {
+    it('The method should be valid.', () => {
+      let cc = new CylindricalCoordinate3D(1, 1, 1);
+      cc.rho = 2;
+      expect(cc.equal()).to.deep.equal({ rho: 2, phi: 1, z: 1 });
+    });
+  });
+
+  describe('set phi(phi)', () => {
+    it('The method should be valid.', () => {
+      let cc = new CylindricalCoordinate3D(1, 1, 1);
+      cc.phi = 2;
+      expect(cc.equal()).to.deep.equal({ rho: 1, phi: 2, z: 1 });
+    });
+  });
+
+  describe('set z(z)', () => {
+    it('The method should be valid.', () => {
+      let cc = new CylindricalCoordinate3D(1, 1, 1);
+      cc.z = 2;
+      expect(cc.equal()).to.deep.equal({ rho: 1, phi: 1, z: 2 });
+    });
+  });
 })

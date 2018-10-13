@@ -57,6 +57,15 @@ class PolarCoordinate2D extends BaseCoordinate2D {
   }
 
   /**
+   * 获取极坐标 rho 值
+   * 
+   * @param  {Number} rho 极坐标 rho 值
+   */
+  set rho(rho) {
+    this.from(rho, this.cache.theta);
+  }
+
+  /**
    * 获取极坐标 theta 值
    * 
    * @return {Number} 极坐标 theta 值
@@ -67,6 +76,15 @@ class PolarCoordinate2D extends BaseCoordinate2D {
     }
 
     return this.cache.theta;
+  }
+
+  /**
+   * 获取极坐标 theta 值
+   * 
+   * @param  {Number} theta 极坐标 theta 值
+   */
+  set theta(theta) {
+    this.from(this.cache.rho, theta);
   }
 
   /**

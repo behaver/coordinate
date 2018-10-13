@@ -49,9 +49,15 @@ let rc = sc.toRC();
 
 `get r()` 获取球坐标 r 值
 
+`set r(r)` 设置球坐标 r 值
+
 `get theta()` 获取球坐标 theta 值
 
+`set theta(theta)` 设置球坐标 theta 值
+
 `get phi()` 获取球坐标 phi 值
+
+`set phi(phi)` 设置球坐标 phi 值
 
 ## 许可证书
 

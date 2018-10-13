@@ -68,6 +68,15 @@ class RectangularCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置直角坐标 x 值
+   * 
+   * @param  {Number} x 直角坐标 x 值
+   */
+  set x(x) {
+    this.from(x, this.cache.y, this.cache.z);
+  }
+
+  /**
    * 获取直角坐标 y 值
    * 
    * @return {Number} 直角坐标 y 值
@@ -81,6 +90,15 @@ class RectangularCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置直角坐标 y 值
+   * 
+   * @param  {Number} y 直角坐标 y 值
+   */
+  set y(y) {
+    this.from(this.cache.x, y, this.cache.z);
+  }
+
+  /**
    * 获取直角坐标 z 值
    * 
    * @return {Number} 直角坐标 z 值
@@ -91,6 +109,15 @@ class RectangularCoordinate3D extends BaseCoordinate3D {
     }
 
     return this.cache.z;
+  }
+
+  /**
+   * 设置直角坐标 z 值
+   * 
+   * @param  {Number} z 直角坐标 z 值
+   */
+  set z(z) {
+    this.from(this.cache.x, this.cache.y, z);
   }
 
   /**

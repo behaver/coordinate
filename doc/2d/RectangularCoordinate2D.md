@@ -39,7 +39,11 @@ let pc = rc.toPC();
 
 `get x()` 获取直角坐标 x 值
 
+`set x(x)` 设置直角坐标 x 值
+
 `get y()` 获取直角坐标 y 值
+
+`set y(y)` 设置直角坐标 y 值
 
 ## 许可证书
 

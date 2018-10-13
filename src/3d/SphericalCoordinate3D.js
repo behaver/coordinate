@@ -74,6 +74,15 @@ class SphericalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置球坐标 r 值
+   * 
+   * @param {Number} r 球坐标 r 值
+   */
+  set r(r) {
+    this.from(r, this.cache.theta, this.cache.phi);
+  }
+
+  /**
    * 获取球坐标 theta 值
    * 
    * @return {Number} 球坐标 theta 值
@@ -87,6 +96,15 @@ class SphericalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置球坐标 theta 值
+   * 
+   * @param {Number} theta 球坐标 theta 值
+   */
+  set theta(theta) {
+    this.from(this.cache.r, theta, this.cache.phi);
+  }
+
+  /**
    * 获取球坐标 phi 值
    * 
    * @return {Number} 球坐标 phi 值
@@ -97,6 +115,15 @@ class SphericalCoordinate3D extends BaseCoordinate3D {
     }
 
     return this.cache.phi;
+  }
+
+  /**
+   * 设置球坐标 phi 值
+   * 
+   * @param {Number} phi 球坐标 phi 值
+   */
+  set phi(phi) {
+    this.from(this.cache.r, this.cache.theta, phi);
   }
 
   /**

@@ -39,7 +39,11 @@ let rc = pc.toRC();
 
 `get rho()` 获取极坐标 rho 值
 
+`set rho(rho)` 设置极坐标 rho 值
+
 `get theta()` 获取极坐标 theta 值
+
+`set theta(theta)` 设置极坐标 theta 值
 
 ## 许可证书
 

@@ -115,4 +115,28 @@ describe('#RectangularCoordinate3D', () => {
       expect(rc.equal().z).to.equal(rc.z);
     });
   });
+
+  describe('set x(x)', () => {
+    it('The method should be valid.', () => {
+      let rc = new RectangularCoordinate3D(1, 1, 1);
+      rc.x = 2;
+      expect(rc.equal()).to.deep.equal({ x: 2, y: 1, z: 1 });
+    });
+  });
+
+  describe('set y(y)', () => {
+    it('The method should be valid.', () => {
+      let rc = new RectangularCoordinate3D(1, 1, 1);
+      rc.y = 2;
+      expect(rc.equal()).to.deep.equal({ x: 1, y: 2, z: 1 });
+    });
+  });
+
+  describe('set z(z)', () => {
+    it('The method should be valid.', () => {
+      let rc = new RectangularCoordinate3D(1, 1, 1);
+      rc.z = 2;
+      expect(rc.equal()).to.deep.equal({ x: 1, y: 1, z: 2 });
+    });
+  });
 })

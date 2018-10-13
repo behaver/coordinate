@@ -120,4 +120,20 @@ describe('#PolarCoordinate2D', () => {
       expect(pc.equal().theta).to.equal(pc.theta);
     });
   });
+
+  describe('set rho(rho)', () => {
+    it('The method should be valid.', () => {
+      let pc = new PolarCoordinate2D(1, 1);
+      pc.rho = 2;
+      expect(pc.equal()).to.deep.equal({ rho: 2, theta: 1 });
+    });
+  });
+
+  describe('set theta(theta)', () => {
+    it('The method should be valid.', () => {
+      let pc = new PolarCoordinate2D(1, 1);
+      pc.theta = 2;
+      expect(pc.equal()).to.deep.equal({ rho: 1, theta: 2 });
+    });
+  });
 })

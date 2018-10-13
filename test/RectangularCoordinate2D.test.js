@@ -82,4 +82,20 @@ describe('#RectangularCoordinate2D', () => {
       expect(rc.equal().y).to.equal(rc.y);
     });
   });
+
+  describe('set x(x)', () => {
+    it('The method should be valid.', () => {
+      let rc = new RectangularCoordinate2D(1, 1);
+      rc.x = 2;
+      expect(rc.equal()).to.deep.equal({ x: 2, y: 1 });
+    });
+  });
+
+  describe('set y(y)', () => {
+    it('The method should be valid.', () => {
+      let rc = new RectangularCoordinate2D(1, 1);
+      rc.y = 2;
+      expect(rc.equal()).to.deep.equal({ x: 1, y: 2 });
+    });
+  });
 })

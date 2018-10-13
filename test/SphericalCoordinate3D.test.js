@@ -166,4 +166,28 @@ describe('#SphericalCoordinate3D', () => {
       expect(sc.equal().phi).to.equal(sc.phi);
     });
   });
+
+  describe('set r(r)', () => {
+    it('The method should be valid.', () => {
+      let sc = new SphericalCoordinate3D(1, 1, 1);
+      sc.r = 2;
+      expect(sc.equal()).to.deep.equal({ r: 2, theta: 1, phi: 1 });
+    });
+  });
+
+  describe('set theta(theta)', () => {
+    it('The method should be valid.', () => {
+      let sc = new SphericalCoordinate3D(1, 1, 1);
+      sc.theta = 2;
+      expect(sc.equal()).to.deep.equal({ r: 1, theta: 2, phi: 1 });
+    });
+  });
+
+  describe('set phi(phi)', () => {
+    it('The method should be valid.', () => {
+      let sc = new SphericalCoordinate3D(1, 1, 1);
+      sc.phi = 2;
+      expect(sc.equal()).to.deep.equal({ r: 1, theta: 1, phi: 2 });
+    });
+  });
 })

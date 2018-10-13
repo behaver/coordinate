@@ -74,6 +74,15 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置柱面坐标 rho 值
+   * 
+   * @param {Number} rho 柱面坐标 rho 值
+   */
+  set rho(rho) {
+    this.from(rho, this.cache.phi, this.cache.z);
+  }
+
+  /**
    * 获取柱面坐标 phi 值
    * 
    * @return {Number} 柱面坐标 phi 值
@@ -87,6 +96,15 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
+   * 设置柱面坐标 phi 值
+   * 
+   * @param {Number} phi 柱面坐标 phi 值
+   */
+  set phi(phi) {
+    this.from(this.cache.rho, phi, this.cache.z);
+  }
+
+  /**
    * 获取柱面坐标 z 值
    * 
    * @return {Number} 柱面坐标 z 值
@@ -97,6 +115,15 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
     }
 
     return this.cache.z;
+  }
+
+  /**
+   * 设置柱面坐标 z 值
+   * 
+   * @param {Number} z 柱面坐标 z 值
+   */
+  set z(z) {
+    this.from(this.cache.rho, this.cache.phi, z);
   }
 
   /**

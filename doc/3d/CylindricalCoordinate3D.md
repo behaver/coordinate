@@ -49,9 +49,15 @@ let sc = cc.toSC();
 
 `get rho()` 获取柱面坐标 rho 值
 
+`set rho(rho)` 设置柱面坐标 rho 值
+
 `get phi()` 获取柱面坐标 phi 值
 
+`set phi(phi)` 设置柱面坐标 phi 值
+
 `get z()` 获取柱面坐标 z 值
+
+`set z(z)` 设置柱面坐标 z 值
 
 ## 许可证书
 
