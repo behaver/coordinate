@@ -12,7 +12,8 @@ const switchers = {
     let theta = Math.atan2(y, x);
     return {
       rho: Math.sqrt(x * x + y * y),
-      theta: theta < 0 ? theta + Math.PI * 2 : theta,
+      // theta: theta < 0 ? theta + Math.PI * 2 : theta,
+      theta,
     };
   },
 
@@ -139,7 +140,7 @@ class SystemSwitcher2D {
   fromPC(rho, theta) {
     if (typeof(rho) !== 'number' || typeof(theta) !== 'number') throw Error('Illegality Parameters.');
     if (rho < 0) throw Error('The param rho has to be equal or greater than 0.');
-    if (theta < 0 || theta > 2 * Math.PI) throw Error('The param theta has to be in [0, 2π]');
+    // if (theta < 0 || theta > 2 * Math.PI) throw Error('The param theta has to be in [0, 2π]');
 
     this.cache = {
       pc: { rho, theta },

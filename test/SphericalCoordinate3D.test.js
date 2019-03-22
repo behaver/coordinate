@@ -29,35 +29,35 @@ describe('#SphericalCoordinate3D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, π].', () => {
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, -2, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, 4, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, 0, 0.23);
-      }).not.to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, Math.PI, 0.23);
-      }).not.to.throw();
-    })
+    // it('The param theta has to be in [0, π].', () => {
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, -2, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, 4, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, 0, 0.23);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, Math.PI, 0.23);
+    //   }).not.to.throw();
+    // })
 
-    it('The param phi has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, 2, -2);
-      }).to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, 2, 7);
-      }).to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, 0, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = new SphericalCoordinate3D(1, Math.PI, 2 * Math.PI);
-      }).not.to.throw();
-    })
+    // it('The param phi has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, 2, -2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, 2, 7);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, 0, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = new SphericalCoordinate3D(1, Math.PI, 2 * Math.PI);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#from', () => {
@@ -85,35 +85,35 @@ describe('#SphericalCoordinate3D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, π].', () => {
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, -2, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, 4, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, 0, 0.23);
-      }).not.to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, Math.PI, 0.23);
-      }).not.to.throw();
-    })
+    // it('The param theta has to be in [0, π].', () => {
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, -2, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, 4, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, 0, 0.23);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, Math.PI, 0.23);
+    //   }).not.to.throw();
+    // })
 
-    it('The param phi has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, 2, -2);
-      }).to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, 2, 7);
-      }).to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, 0, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = (new SphericalCoordinate3D).from(1, Math.PI, 2 * Math.PI);
-      }).not.to.throw();
-    })
+    // it('The param phi has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, 2, -2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, 2, 7);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, 0, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = (new SphericalCoordinate3D).from(1, Math.PI, 2 * Math.PI);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#equal', () => {

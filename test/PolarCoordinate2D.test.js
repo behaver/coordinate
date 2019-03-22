@@ -29,20 +29,20 @@ describe('#PolarCoordinate2D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = new PolarCoordinate2D(1, -2);
-      }).to.throw();
-      expect(() => {
-        let a = new PolarCoordinate2D(1, 7);
-      }).to.throw();
-      expect(() => {
-        let a = new PolarCoordinate2D(1, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = new PolarCoordinate2D(1, 2 * Math.PI);
-      }).not.to.throw();
-    })
+    // it('The param theta has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = new PolarCoordinate2D(1, -2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new PolarCoordinate2D(1, 7);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new PolarCoordinate2D(1, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = new PolarCoordinate2D(1, 2 * Math.PI);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#from', () => {
@@ -70,20 +70,20 @@ describe('#PolarCoordinate2D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = (new PolarCoordinate2D).from(1, -2);
-      }).to.throw();
-      expect(() => {
-        let a = (new PolarCoordinate2D).from(1, 7);
-      }).to.throw();
-      expect(() => {
-        let a = (new PolarCoordinate2D).from(1, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = (new PolarCoordinate2D).from(1, 2 * Math.PI);
-      }).not.to.throw();
-    })
+    // it('The param theta has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = (new PolarCoordinate2D).from(1, -2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new PolarCoordinate2D).from(1, 7);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new PolarCoordinate2D).from(1, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = (new PolarCoordinate2D).from(1, 2 * Math.PI);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#equal', () => {

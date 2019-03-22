@@ -14,7 +14,8 @@ const switchers = {
     let phi = Math.atan2(y, x);
     return {
       rho: Math.sqrt(x * x + y * y),
-      phi: phi < 0 ? phi + Math.PI * 2 : phi,
+      // phi: phi < 0 ? phi + Math.PI * 2 : phi,
+      phi,
       z,
     }
   },
@@ -35,7 +36,8 @@ const switchers = {
     return {
       r,
       theta: r === 0 ? 0 : Math.acos(z / r),
-      phi: phi < 0 ? phi + Math.PI * 2 : phi,
+      // phi: phi < 0 ? phi + Math.PI * 2 : phi,
+      phi,
     }
   },
 
@@ -53,7 +55,8 @@ const switchers = {
     let theta = Math.atan2(rho, z);
     return {
       r: Math.sqrt(rho * rho + z * z),
-      theta: theta < 0 ? theta + Math.PI * 2 : theta,
+      // theta: theta < 0 ? theta + Math.PI * 2 : theta,
+      theta,
       phi,
     };
   },
@@ -202,7 +205,7 @@ class SystemSwitcher3D {
   fromCC(rho, phi, z) {
     if (typeof(rho) !== 'number' || typeof(phi) !== 'number' || typeof(z) !== 'number') throw Error('Illegality Parameters.');
     if (rho < 0) throw Error('The param rho has to be equal or greater than 0.');
-    if (phi < 0 || phi > 2 * Math.PI) throw Error('The param phi has to be in [0, 2π]');
+    // if (phi < 0 || phi > 2 * Math.PI) throw Error('The param phi has to be in [0, 2π]');
 
     this.cache = {
       cc: { rho, phi, z },
@@ -241,8 +244,8 @@ class SystemSwitcher3D {
   fromSC(r, theta, phi) {
     if (typeof(r) !== 'number' || typeof(theta) !== 'number' || typeof(phi) !== 'number') throw Error('Illegality Parameters.');
     if (r < 0) throw Error('The param r has to be equal or greater than 0.');
-    if (theta < 0 || theta > Math.PI) throw Error('The param theta has to be in [0, π]');
-    if (phi < 0 || phi > 2 * Math.PI) throw Error('The param phi has to be in [0, 2π]');
+    // if (theta < 0 || theta > Math.PI) throw Error('The param theta has to be in [0, π]');
+    // if (phi < 0 || phi > 2 * Math.PI) throw Error('The param phi has to be in [0, 2π]');
 
     this.cache = {
       sc: { r, theta, phi },

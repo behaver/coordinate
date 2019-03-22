@@ -21,29 +21,29 @@ describe('#CylindricalCoordinate3D', () => {
       }).not.to.throw();
     });
 
-    it('The param rho has to be equal or greater than 0.', () => {
-      expect(() => {
-        let a = new CylindricalCoordinate3D(-1, 2, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = new CylindricalCoordinate3D(0, 2, 0.23);
-      }).not.to.throw();
-    });
+    // it('The param rho has to be equal or greater than 0.', () => {
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(-1, 2, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(0, 2, 0.23);
+    //   }).not.to.throw();
+    // });
 
-    it('The param phi has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = new CylindricalCoordinate3D(1, -2, 2);
-      }).to.throw();
-      expect(() => {
-        let a = new CylindricalCoordinate3D(1, 7, 2);
-      }).to.throw();
-      expect(() => {
-        let a = new CylindricalCoordinate3D(1, 0, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = new CylindricalCoordinate3D(1, 2 * Math.PI, -1);
-      }).not.to.throw();
-    })
+    // it('The param phi has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(1, -2, 2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(1, 7, 2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(1, 0, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = new CylindricalCoordinate3D(1, 2 * Math.PI, -1);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#from', () => {
@@ -62,29 +62,29 @@ describe('#CylindricalCoordinate3D', () => {
       }).not.to.throw();
     });
 
-    it('The param rho has to be equal or greater than 0.', () => {
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(-1, 2, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(0, 2, 0.23);
-      }).not.to.throw();
-    });
+    // it('The param rho has to be equal or greater than 0.', () => {
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(-1, 2, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(0, 2, 0.23);
+    //   }).not.to.throw();
+    // });
 
-    it('The param phi has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(1, -2, 2);
-      }).to.throw();
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(1, 7, 2);
-      }).to.throw();
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(1, 0, 0);
-      }).not.to.throw();
-      expect(() => {
-        let a = (new CylindricalCoordinate3D).from(1, 2 * Math.PI, -1);
-      }).not.to.throw();
-    })
+    // it('The param phi has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(1, -2, 2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(1, 7, 2);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(1, 0, 0);
+    //   }).not.to.throw();
+    //   expect(() => {
+    //     let a = (new CylindricalCoordinate3D).from(1, 2 * Math.PI, -1);
+    //   }).not.to.throw();
+    // })
   })
 
   describe('#equal', () => {

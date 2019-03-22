@@ -112,14 +112,14 @@ describe('#SystemSwitcher3D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromCC(1, 7, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromCC(1, -1, 0.23);
-      }).to.throw();
-    });
+    // it('The param theta has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromCC(1, 7, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromCC(1, -1, 0.23);
+    //   }).to.throw();
+    // });
   });
 
   describe('#toCC', () => {
@@ -146,23 +146,23 @@ describe('#SystemSwitcher3D', () => {
       }).not.to.throw();
     });
 
-    it('The param theta has to be in [0, π].', () => {
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromSC(1, 4, 0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromSC(1, -1, 0.23);
-      }).to.throw();
-    });
+    // it('The param theta has to be in [0, π].', () => {
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromSC(1, 4, 0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromSC(1, -1, 0.23);
+    //   }).to.throw();
+    // });
 
-    it('The param phi has to be in [0, 2π].', () => {
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromSC(1, 2, -0.23);
-      }).to.throw();
-      expect(() => {
-        let a = (new SystemSwitcher3D).fromSC(1, 1, 7);
-      }).to.throw();
-    });
+    // it('The param phi has to be in [0, 2π].', () => {
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromSC(1, 2, -0.23);
+    //   }).to.throw();
+    //   expect(() => {
+    //     let a = (new SystemSwitcher3D).fromSC(1, 1, 7);
+    //   }).to.throw();
+    // });
   });
 
   describe('#toSC', () => {
