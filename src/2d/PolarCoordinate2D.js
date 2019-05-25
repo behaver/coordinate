@@ -35,15 +35,6 @@ class PolarCoordinate2D extends BaseCoordinate2D {
   }
 
   /**
-   * 转换坐标至直角坐标系
-   * 
-   * @return {Object} 返回 直角坐标 对象
-   */
-  toRC() {
-    return this.point.toRC();
-  }
-
-  /**
    * 获取极坐标 rho 值
    * 
    * @return {Number} 极坐标 rho 值

@@ -35,15 +35,6 @@ class RectangularCoordinate2D extends BaseCoordinate2D {
   }
 
   /**
-   * 转换坐标至极坐标系
-   * 
-   * @return {Object} 返回 极坐标 对象
-   */
-  toPC() {
-    return this.point.toPC();
-  }
-
-  /**
    * 获取直角坐标 x 值
    * 
    * @return {Number} 直角坐标 x 值

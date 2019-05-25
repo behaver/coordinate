@@ -43,24 +43,6 @@ class SphericalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
-   * 转换坐标至直角坐标系
-   * 
-   * @return {Object} 返回 直角坐标 对象
-   */
-  toRC() {
-    return this.point.toRC();
-  }
-
-  /**
-   * 转换坐标至柱面坐标系
-   * 
-   * @return {Object} 返回 柱面坐标 对象
-   */
-  toCC() {
-    return this.point.toCC();
-  }
-
-  /**
    * 获取球坐标 r 值
    * 
    * @return {Number} 球坐标 r 值

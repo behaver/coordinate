@@ -43,24 +43,6 @@ class CylindricalCoordinate3D extends BaseCoordinate3D {
   }
 
   /**
-   * 转换坐标至直角坐标系
-   * 
-   * @return {Object} 返回 直角坐标 对象
-   */
-  toRC() {
-    return this.point.toRC();
-  }
-
-  /**
-   * 转换坐标至球极坐标系
-   * 
-   * @return {Object} 返回 球坐标 对象
-   */
-  toSC() {
-    return this.point.toSC();
-  }
-
-  /**
    * 获取柱面坐标 rho 值
    * 
    * @return {Number} 柱面坐标 rho 值

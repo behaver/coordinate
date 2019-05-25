@@ -233,6 +233,53 @@ class BaseCoordinate3D {
 
     return this;
   }
+
+  /**
+   * 转换坐标至直角坐标系
+   * 
+   * @return {Object} 返回 直角坐标 对象
+   */
+  toRC() {
+    return this.point.toRC();
+  }
+
+  /**
+   * 转换坐标至柱面坐标系
+   * 
+   * @return {Object} 返回 柱面坐标 对象
+   */
+  toCC() {
+    return this.point.toCC();
+  }
+
+  /**
+   * 转换坐标至球极坐标系
+   * 
+   * @return {Object} 返回 球坐标 对象
+   */
+  toSC() {
+    return this.point.toSC();
+  }
+
+  /**
+   * 转换至指定坐标系
+   * 
+   * @param  {String} sys 指定坐标系统字串
+   * @return {Object}     指定系统坐标对象
+   */
+  to(sys) {
+    switch(String(sys).toLowerCase()) {
+      case 'rc':
+        return this.toRC();
+      case 'cc':
+        return this.toCC();
+      case 'sc':
+        return this.toSC();
+
+      default:
+        throw Error('The param sys should be valid.');
+    }
+  }
 }
 
 module.exports = BaseCoordinate3D;

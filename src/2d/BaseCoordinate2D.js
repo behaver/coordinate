@@ -134,6 +134,42 @@ class BaseCoordinate2D {
 
     return this;
   }
+
+  /**
+   * 转换坐标至直角坐标系
+   * 
+   * @return {Object} 返回 直角坐标 对象
+   */
+  toRC() {
+    return this.point.toRC();
+  }
+
+  /**
+   * 转换坐标至极坐标系
+   * 
+   * @return {Object} 返回 极坐标 对象
+   */
+  toPC() {
+    return this.point.toPC();
+  }
+
+  /**
+   * 转换至指定坐标系
+   * 
+   * @param  {String} sys 指定坐标系统字串
+   * @return {Object}     指定系统坐标对象
+   */
+  to(sys) {
+    switch(String(sys).toLowerCase()) {
+      case 'rc':
+        return this.toRC();
+      case 'pc':
+        return this.toPC();
+
+      default:
+        throw Error('The param sys should be valid.');
+    }
+  }
 }
 
 module.exports = BaseCoordinate2D;
